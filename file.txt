@@ -1,4 +1,1 @@
-hello
-how r u
-this is a testing file
-nothing serious here
+Everything in python is an object
