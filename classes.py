@@ -8,6 +8,7 @@ class Employee:
         else:
             print("target missed")
         
-employee1 = Employee()            
+employee1 = Employee()
+employee2 = Employee()            
 employee1.hasAchievedTarget()
 print(employee1.name)
