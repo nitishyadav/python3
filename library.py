@@ -1,7 +1,7 @@
 #library 
 
 class Library:
-    def __init__(self, lostOfBooks):
+    def __init__(self, listOfBooks):
         self.availableBooks = listOfBooks
         
     def displayAvailableBooks(self):
@@ -33,8 +33,21 @@ class Customer:
         return self.book
         
 library = Library(['Think and Grow Rich','Who will cry when you Die','For one more Day'])
-customer = Customer()  
-print("Enter 1 to display the available books")
-print("Enter 2 to request for a book")
-print("Enter 3 to return a book")
-print("Enter 4 to exit")      
+customer = Customer()
+while True:  
+    print("Enter 1 to display the available books")
+    print("Enter 2 to request for a book")
+    print("Enter 3 to return a book")
+    print("Enter 4 to exit") 
+
+    userChoice = int(input())
+    if userChoice is 1:
+        library.displayAvailableBooks()
+    elif userChoice is 2:
+        requestedBook = customer.requestBook()
+        library.lendBook(requestedBook)
+    elif userChoice is 3:
+        requestedBook = customer.returnBook()
+        library.addBook(returnedBook)
+    elif userChoice is 4:
+        quit()
