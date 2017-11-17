@@ -32,7 +32,7 @@ source1=sys.argv[5]
 source2=sys.argv[6]
 
 
-#provider('aws', access_key=' AKIAJ3IBSGR743T2EPBA',secret_key='Vv7S+ kQ62OP71on7Ampq/aBCy3nJyUoCdl9iiMKX', region='ap-south-1')
+#provider('aws', region='ap-south-1')
 provider('aws',region='ap-south-1')
 
 #aws_key_pair('test_keypair',key_name='id_rsa.pub')
