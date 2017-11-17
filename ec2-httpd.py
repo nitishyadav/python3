@@ -6,7 +6,7 @@ import os
 import sys
 import logging
 
-provider('aws', access_key='AKIAJ3IBSGR743T2EPBA',secret_key='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', region='ap-south-1')
+provider('aws', region='ap-south-1')
 
 
 #aws_key_pair('test_keypair',key_name='id_rsa.pub')
