@@ -1,2 +1,9 @@
 #what this folder is all about
-#what this folder is all about
+#Python2 vs python3
+python3.0 release on 2008
+In python2, the / symbol performs what is known as classic  division, this means the decimal points are truncated.
+In python3 however, a single /performs "true" division. So you get 1.5 if you had inout 3/2.
+To avaoid this situation in python2 specify the numbers to be float.
+
+
+from __future__ import division  >> this imports the future functionality of python 3 in python2
