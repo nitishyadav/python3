@@ -7,3 +7,12 @@ To avaoid this situation in python2 specify the numbers to be float.
 
 
 from __future__ import division  >> this imports the future functionality of python 3 in python2
+
+s[:1]  >> grab everything from first index till last in a string 's'
+ex s = 'Nitish Yadav'
+s[:1] = itish Yadav
+This does not make any modification to the present string.
+
+s[:3] >> upto 3, not included 3
+s[:3] = 'Nit'
+s[:] >>grab everything
