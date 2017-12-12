@@ -16,3 +16,7 @@ This does not make any modification to the present string.
 s[:3] >> upto 3, not included 3
 s[:3] = 'Nit'
 s[:] >>grab everything
+# Grab everything, but go in steps size of 1
+s[::1]
+# We can use this to print a string backwards
+s[::-1]
