@@ -20,3 +20,59 @@ s[:] >>grab everything
 s[::1]
 # We can use this to print a string backwards
 s[::-1]
+
+Lists:
+Lists can be thought of the most general version of a sequence in Python. Unlike strings, they are mutable, meaning the elements inside a list can be changed!
+
+
+# Append
+l.append('append me!')
+
+
+
+
+# Pop off the 0 indexed item
+l.pop(0)
+
+
+
+We can use the sort method and the reverse methods to also effect your lists:
+
+new_list = ['a','e','x','b','c']
+
+#Show
+new_list
+
+['a', 'e', 'x', 'b', 'c']
+# Use reverse to reverse order (this is permanent!)
+new_list.reverse()
+
+new_list
+
+['c', 'b', 'x', 'e', 'a']
+
+# Use sort to sort the list (in this case alphabetical order, but for numbers it will go ascending)
+new_list.sort()
+
+new_list
+
+['a', 'b', 'c', 'e', 'x']
+
+
+Nesting Lists
+A great feature of of Python data structures is that they support nesting.
+# Let's make three lists
+lst_1=[1,2,3]
+lst_2=[4,5,6]
+lst_3=[7,8,9]
+
+# Make a list of lists to form a matrix
+matrix = [lst_1,lst_2,lst_3]
+# Show
+matrix
+[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+# Grab first item in matrix object
+matrix[0]
+[1, 2, 3]
+
