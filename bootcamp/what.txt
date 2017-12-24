@@ -3,7 +3,7 @@
 python3.0 release on 2008
 In python2, the / symbol performs what is known as classic  division, this means the decimal points are truncated.
 In python3 however, a single /performs "true" division. So you get 1.5 if you had inout 3/2.
-To avaoid this situation in python2 specify the numbers to be float.
+To avoid this situation in python2 specify the numbers to be float.
 
 
 from __future__ import division  >> this imports the future functionality of python 3 in python2
@@ -76,3 +76,57 @@ matrix
 matrix[0]
 [1, 2, 3]
 
+Dictionary cannot be indexed, we reference by keys. It consist a key and associated value. tha value can be almost any python object.
+
+Tuples: In python tuples are very similar to lists, however, unlike lists they are immutable meaninig they can not be changed.
+ex: t =(1,2,4,2) >> this is a tuple
+
+
+Basic Practice:
+http://codingbat.com/python
+More Mathematical (and Harder) Practice:
+https://projecteuler.net/archives
+List of Practice Problems:
+http://www.codeabbey.com/index/task_list
+A SubReddit Devoted to Daily Practice Problems:
+https://www.reddit.com/r/dailyprogrammer
+A very tricky website with very few hints and touch problems (Not for beginners but still interesting)
+http://www.pythonchallenge.com/
+
+
+
+While Loop:
+
+while test:
+    code statement
+    if test:
+        break
+    if test:
+        continue
+else:
+
+break: Breaks out of the current closest enclosing loop
+continue: Goes to the top of the closest enclosing loop.
+pass: Does nothing at all
+
+
+range()
+range() allows us to create a list of numbers ranging from starting point up to an ending point, we can also assign step size.
+
+Comprehensions:
+List comprehensions allow us to build out lists using a different notation. You can think of it as essentially a one line for loop built inside of brackets.
+#Grab every letter in string
+lst = [x for x in 'word]
+
+#create a list
+l = []
+for letter in 'word':
+    l.append(letter)
+    
+print l
+
+output: ['w','o','r','d']  
+
+lst = [letter for letter in 'word'] 
+#list of even numbers
+l = [num for num in range(20) if num%2 ==0] 
