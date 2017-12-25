@@ -130,3 +130,8 @@ output: ['w','o','r','d']
 lst = [letter for letter in 'word'] 
 #list of even numbers
 l = [num for num in range(20) if num%2 ==0] 
+
+Lambda?
+lambda's body is a single expression, not a block of statements.
+We can only squeeze design.
+The best way to learn how to use lambda expressions is to slowly convert a normal 'def' function inot a lambda expression.
