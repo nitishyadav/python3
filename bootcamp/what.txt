@@ -1,4 +1,5 @@
 #what this folder is all about
+#everything in python is an object
 #Python2 vs python3
 python3.0 release on 2008
 In python2, the / symbol performs what is known as classic  division, this means the decimal points are truncated.
