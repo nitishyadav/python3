@@ -136,3 +136,40 @@ Lambda?
 lambda's body is a single expression, not a block of statements.
 We can only squeeze design.
 The best way to learn how to use lambda expressions is to slowly convert a normal 'def' function inot a lambda expression.
+
+
+
+Exception Handling
+'''''''''''''''''''
+The basic terminolgy and syntax used to handle errors in python is the 'try' and 'except' statements.
+
+Try, except, finally
+All three keywords can be combined to make your code robust to errors and exceptions
+
+
+Map, Reduce, Filter
+'''''''''''''''''''
+A quick note for Python 3 users for the Map, Reduce, and Filter functions. These functions return iterators in Python 3 instead of lists (as in Python 2). To get a list for any of these functions in Python 3, you can just cast it as a list using list() around the function.
+Also in Python 3, reduce is imported from functools.
+
+
+Built-in functions
+''''''''''''''
+zip
+zip() makes an iterator that aggregates elements fromeach of the iterables.
+Returns an iterator of tuples, where the i-th tuple contains the i-th element from each of the argument sequence or iterables.
+
+zip is equivalent to 
+
+def zip(*iterables):
+    #zip('ABCD','xy') -->Ax By
+    sentinel = object()
+    iterators = [iter(it) for it in iterables]
+    while iterators:
+        result = []
+        for it in iterators:
+            elem = next(it,sentinel)
+            if elem is sentinel:
+                return
+            result.append(elem)
+        yield tuple(result)
