@@ -21,9 +21,8 @@ a = "Hello there what do you want"
 
 letters=[]
 
-for l in a:
-    if(l in alpha) and (l not in letters):
+for l in alpha:
+    if(l not in a):
         letters.append(l)
 print(letters)
-
 
