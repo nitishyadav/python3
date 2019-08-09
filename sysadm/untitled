@@ -1,0 +1,27 @@
+
+			"parameters": [
+				{
+					"key": "volume-driver",
+					"value": "nfs"
+				},
+				{
+					"key": "volume",
+					"value": "nstg201-v.prod.jp.local/export/stg/vol1/rms/atago:/a/nstg201/export/stg/vol1/rms/atago"
+				},
+				{
+					"key": "volume",
+					"value": "nstg201-v.prod.jp.local/export/stg/vol1/rms/com:/a/nstg201/export/stg/vol1/rms/com"
+				},
+				{
+					"key": "volume",
+					"value": "nstg201-v.prod.jp.local/export/stg/vol1/rms/mall:/a/nstg201/export/stg/vol1/rms/mall"
+				},
+				{
+					"key": "volume",
+					"value": "nstg201-v.prod.jp.local/export/stg/vol1/ns-home/docs:/a/nstg201/export/stg/vol1/ns-home/docs"
+				},
+				{
+					"key": "volume",
+					"value": "nstg201-v.prod.jp.local/export/stg/exalogic:/a/nstg201/export/stg/exalogic"
+				}
+			]
