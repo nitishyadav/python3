@@ -1,0 +1,3 @@
+In this section, we are going learn about the pyPdf module, which helps in extracting the metadata from a pdf file. But first, what is metadata? Metadata is data about data. Metadata is structured information that describes primary data. Metadata is a summary of that data. It contains the basic information regarding your actual data. It helps in finding a particular instance of your data.
+
+Make sure you have the pdf file present in your directory from which you want to extract the information.

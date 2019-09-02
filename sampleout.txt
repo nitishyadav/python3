@@ -1,0 +1,251 @@
+#Data Analysis using python:
+Q.Find the correlation between the following columns: bore, stroke,compression-ratio , and horsepower.
+Hint: if you would like to select those columns use the following syntax: df[['bore','stroke' ,'compression-ratio','horsepower']] 
+Ans: df[['bore','stroke' ,'compression-ratio','horsepower']].corr()
+
+Continuos numerical variables:These are variables that may contain any value within some range. It can have the type "int64" or "float64". A great way to visualize these variables these variables is using scatterplots with fitted lines.
+
+In order to start understanding the (linear) relationship between an individual variable and the price. We can do this by using "regplot", which plots the scatterplot plus the fitted regression line for the data.
+
+Let's find the scatterplot of "engine-size" and "price":
+# Engine size as potential predictor variable of price
+    sns.regplot(x="engine-size", y="price", data=df)
+    plt.ylim(0,)
+
+    
+finding the corelation by:
+    df[["engine-size", "price"]].corr()    
+
+Weak Linear Relationship:
+    Let's see if "Peak-rpm" as a predictor variable of "price".
+    sns.regplot(x="peak-rpm", y="price", data=df)
+
+Categorial variables:
+These are the variables that describe a 'characteristic' of a data unit, and are selected fro a small group of categories.
+The categorial variables can have the type "object" or "int64".A good way to visualize categorial variables is by using boxplots.
+
+sns.boxplot(x="body-style", y="price", data=df)    >>relationship between "busy-style" and "price"
+
+sns.boxplot(x="engine-location", y="price", data=df) >> examining engine-location and price
+
+Descriptive Statistical Analysis:
+The describe function automatically computes basic statistics for all continuous variables. Any NaN values are automatically skipped in these statistics.
+
+This will show:
+
+    the count of that variable
+    the mean
+    the standard deviation (std)
+    the minimum value
+    the IQR (Interquartile Range: 25%, 50% and 75%)
+    the maximum value
+ We can apply the method "describe" as follows:
+df.describe()
+We can apply the method "describe" on the variables of type 'object' as follows:
+df.describe(include=['object'])
+
+Value Counts
+df['drive-wheels'].value_counts()
+
+We can convert the series to a Dataframe as follows :
+df['drive-wheels'].value_counts().to_frame()
+
+rename the column 'drive-wheels' to 'value_counts'.
+drive_wheels_counts.rename(columns={'drive-wheels': 'value_counts'}, inplace=True)
+
+
+What is regression:
+In mathematics, regression is the process of determining the relationship between two variables. It is also one of the statistical analysis methods that can be used to accessing the association between the two different variables.
+
+There are many steps to getting a prediction, for example, Normalization, polynomial Transform and Linear regression.
+
+To determine final best fit, we look at a combination of:
+    >Do the predicted value makes sense 
+    >Visualization
+    
+    
+#setup
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+#load data and store it in dataframe df:
+path = 'https://ibm.box.com/shared/static/q6iiqb1pd7wo8r3q28jvgsrprzezjqk3.csv'
+df = pd.read_csv(path)
+df.head()
+
+
+The result of linear regression is a linear function that predicts the response (dependent) variable as a function of the predictor (independent) variable:
+    Y: Response Variable
+    X: Predictor Variables
+Linear Function:
+    Yhat = a + bX
+    :a represent to the intercept of the regression, in other words: the value of Y when X is 0
+    :b refers to the slope of the regression line, in other words : the value with which Y changes when X increases by 1
+    
+#loading the modules for linear regression
+from sklearn.linear_model import LinearRegression
+#create the linear regression object
+lm = LinearRegression()
+lm
+X = df[['highway-mpg']]
+Y = df['price']
+
+#Fit the linear model using highway-mpg
+lm.fit(X,Y)
+
+#We can output a prediction
+Yhat=lm.predict(X)
+Yhat[0:5] 
+
+#to find the value of intercept(a)
+lm.intercept_
+
+#value of slope(b)
+lm.coef_
+
+#Final estimated linear model 
+Yhat = a + bX
+
+
+#The dictinoary is a table or grid that contains two different values.
+
+import pandas as pd
+import numpy as np
+
+# Import clean data 
+path = path='https://ibm.box.com/shared/static/q6iiqb1pd7wo8r3q28jvgsrprzezjqk3.csv'
+df = pd.read_csv(path)
+#Get numeric Data
+df=df._get_numeric_data()
+
+#Libraries for Plotting
+from IPython.display import display
+from IPython.html import widgets 
+from IPython.display import display
+from ipywidgets import interact, interactive, fixed, interact_manual
+print("done")
+
+Functions for Plotting
+def DistributionPlot(RedFunction,BlueFunction,RedName,BlueName,Title ):
+    width = 12
+    height = 10
+    plt.figure(figsize=(width, height))
+
+    ax1 = sns.distplot(RedFunction, hist=False, color="r", label=RedName)
+    ax2 = sns.distplot(BlueFunction, hist=False, color="b", label=BlueName, ax=ax1)
+
+    plt.title(Title)
+    plt.xlabel('Price (in dollars)')
+    plt.ylabel('Proportion of Cars')
+
+    plt.show()
+    plt.close()
+def PollyPlot(xtrain,xtest,y_train,y_test,lr,poly_transform):
+    width = 12
+    height = 10
+    plt.figure(figsize=(width, height))
+    
+    
+    #training data 
+    #testing data 
+    # lr:  linear regression object 
+    #poly_transform:  polynomial transformation object 
+ 
+    xmax=max([xtrain.values.max(),xtest.values.max()])
+
+    xmin=min([xtrain.values.min(),xtest.values.min()])
+
+    x=np.arange(xmin,xmax,0.1)
+
+
+    plt.plot(xtrain,y_train,'ro',label='Training Data')
+    plt.plot(xtest,y_test,'go',label='Test Data')
+    plt.plot(x,lr.predict(poly_transform.fit_transform(x.reshape(-1,1))),label='Predicted Function')
+    plt.ylim([-10000,60000])
+    plt.ylabel('Price')
+    plt.legend()
+    
+#Training and Testing    
+An important step in testing your model is to split your data into training and testing data. We will place the target data price in a separate dataframe y:
+y_data=df['price]
+
+#drop price data in x data
+x_data=df.drop('price',axis=1)
+
+# now we randomly split our data into training and testing data using the function train_test_split
+from sklearn.model_selection import train_test_split
+
+
+x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, test_size=0.15, random_state=1)
+
+
+print("number of test samples :", x_test.shape[0])
+print("number of training samples:",x_train.shape[0])
+
+#The test_size parameter sets the proportion of data that is split into the testing set. In the above, the testing set is set to 10% of the total dataset. 
+Q.Use the function "train_test_split" to split up the data set such that 40% of the data samples will be utilized for testing, set the parameter "random_state" equal to zero. The output of the function should be the following: "x_train_1" , "x_test_1", "y_train_1" and "y_test_1".
+Ans: x_train1, x_test1, y_train1, y_test1 = train_test_split(x_data, y_data, test_size=0.4, random_state=0)
+
+
+#Let's import LinearRegression from the module linear_model
+from sklearn.linear_model import LinearRegression
+# We create a Linear Regression object:
+lre=LinearRegression()
+#we fit the model using the feature horsepower 
+lre.fit(x_train[['horsepower']],y_train)
+
+#Let's Calculate the R^2 on the test data:
+lre.score(x_test[['horsepower']],y_test)
+
+#we can see the R^2 is much smaller using the test data.
+lre.score(x_train[['horsepower']],y_train)
+
+#
+Question #2):
+Find the R^2 on the test data using 90% of the data for training data 
+x_train1, x_test1, y_train1, y_test1 = tarin_test_split(x_data, y_data, test_size=0.9,random_state=0)
+lre.fit(x_train[['horsepower']],y_train1)
+lre.score(x_test1[['horsepower']],y_test1)
+
+Cross-Validation Score
+Lets import model_selection from the module cross_val_scor
+from sklearn.model_selection import cross_val_score
+print("done")
+
+#We input the object, the feature in this case ' horsepower', the target data (y_data). The parameter 'cv' determines the number of folds; in this case 4.
+Rcross=cross_val_score(lre,x_data[['horsepower']], y_data,cv=4)
+#The default scoring is R^2; each element in the array has the average R^2 value in the fold:
+Rcorss
+
+#We can calculate the average and standard deviation of our estimate:
+Q.What is the output of cross_val_score(lre, x_data, y_data, cv=2)
+Ans:  The average R^2 on the test data for each of the two folds 
+
+
+Q.What task does the following command to df.to_csv("A.csv") perform 
+Ans:  Save the dataframe df to a csv file called "A.csv" 
+
+df['peak-rpm'].replace(np.nan, 5,inplace=True) >> replace the not a number values with 5 in the column 'peak-rpm'
+
+What does the vertical axis in a scatter plot represent >> dependent variable
+
+what is the largest possible element resulting in the following operation "df.corr()" >> 1
+
+if the Pearson Correlation of two variables is zero:>> the two variables are not correlated 
+
+
+If the predicted function is:
+Yhat = a + b1 X1 + b2 X2 + b3 X3 + b4 X4
+The method is  >>Multiple Linear Regression
+
+Q.What steps do the following lines of code perform:
+
+Input=[('scale',StandardScaler()),('model',LinearRegression())]
+
+pipe=Pipeline(Input)
+
+pipe.fit(Z,y)
+
+ypipe=pipe.predict(Z)
+Answer:  Standardize the data, then perform a prediction using a linear regression model using the features Z and targets y 
